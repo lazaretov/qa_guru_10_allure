@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,11 +19,16 @@ public class StepsTest {
     public static final String REPOSITORY = "eroshenkoam/allure-example";
     public static final int ISSUE = 80;
 
+    @BeforeAll
+    static void start(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
 
     @Test
     @DisplayName("Поиск Issue по номеру")
     public void lambdaStepTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+
 
         step("Открываем главную страницу", () -> {
             open("https://github.com/");
@@ -55,7 +61,6 @@ public class StepsTest {
     @Link(value = "Testing site", url = "https://github.com/eroshenkoam/allure-example/issues")
     @DisplayName("Поиск Issue по номеру с аннотациями")
     public void annotatedStepTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
 
         WebSteps steps = new WebSteps();
         steps.openMainPaige();
