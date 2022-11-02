@@ -15,7 +15,6 @@ import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.linkText;
 
 public class StepsTest {
-
     public static final String REPOSITORY = "eroshenkoam/allure-example";
     public static final int ISSUE = 80;
 
@@ -61,6 +60,5 @@ public class StepsTest {
         steps.openIssueTab();
         steps.shouldSeeIssueNumber(ISSUE);
     }
-
 }
 

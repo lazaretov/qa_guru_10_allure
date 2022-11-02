@@ -6,7 +6,6 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -26,8 +25,5 @@ public class SelenideTest {
         $(linkText("eroshenkoam/allure-example")).click();
         $("#issues-tab").click();
         $(withText("#80")).should(Condition.exist);
-
-
     }
-
 }
