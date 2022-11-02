@@ -27,25 +27,20 @@ public class StepsTest {
     @Test
     @DisplayName("Поиск Issue по номеру")
     public void lambdaStepTest() {
-
         step("Открываем главную страницу", () -> {
             open("https://github.com/");
         });
-
         step("Ищем репозиторий " + REPOSITORY, () -> {
             $(".header-search-input").click();
             $(".header-search-input").setValue(REPOSITORY);
             $(".header-search-input").submit();
         });
-
         step("Переходим в репозиторий " + REPOSITORY, () -> {
             $(linkText(REPOSITORY)).click();
         });
-
         step("Открываем вкладку Issues", () -> {
             $("#issues-tab").click();
         });
-
         step("Проверяем наличие записи с номер #" + ISSUE, () -> {
             $(withText("#" + ISSUE)).should(Condition.exist);
         });
@@ -59,7 +54,6 @@ public class StepsTest {
     @Link(value = "Testing site", url = "https://github.com/eroshenkoam/allure-example/issues")
     @DisplayName("Поиск Issue по номеру с аннотациями")
     public void annotatedStepTest() {
-
         WebSteps steps = new WebSteps();
         steps.openMainPaige();
         steps.searchRepository(REPOSITORY);
