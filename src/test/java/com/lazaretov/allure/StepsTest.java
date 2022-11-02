@@ -49,8 +49,10 @@ public class StepsTest {
     }
 
     @Test
-    @DisplayName("Поиск Issue по номеру")
+    @DisplayName("Поиск Issue по номеру с аннотациями")
     public void annotatedStepTest() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
         WebSteps steps = new WebSteps();
         steps.openMainPaige();
         steps.searchRepository(REPOSITORY);
