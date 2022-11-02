@@ -3,6 +3,7 @@ package com.lazaretov.allure;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,9 +19,10 @@ public class StepsTest {
     public static final int ISSUE = 80;
 
 
+    @Disabled
     @Test
     @DisplayName("Поиск Issue по номеру")
-    public void lambdaStepTest () {
+    public void lambdaStepTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Открываем главную страницу", () -> {
@@ -44,21 +46,18 @@ public class StepsTest {
         step("Проверяем наличие записи с номер #" + ISSUE, () -> {
             $(withText("#" + ISSUE)).should(Condition.exist);
         });
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Test
+    @DisplayName("Поиск Issue по номеру")
+    public void annotatedStepTest() {
+        WebSteps steps = new WebSteps();
+        steps.openMainPaige();
+        steps.searchRepository(REPOSITORY);
+        steps.clickRepoLink(REPOSITORY);
+        steps.openIssueTab();
+        steps.shouldSeeIssueNumber(ISSUE);
     }
 
 }
+
