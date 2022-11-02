@@ -16,21 +16,16 @@ public class SelenideTest {
 
     @Test
     @DisplayName("Поиск Issue по номеру")
-    public void issueSearchTest () {
+    public void issueSearchTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         open("https://github.com/");
-
         $(".header-search-input").click();
         $(".header-search-input").setValue("eroshenkoam/allure-example");
         $(".header-search-input").submit();
-
         $(linkText("eroshenkoam/allure-example")).click();
-
         $("#issues-tab").click();
-
         $(withText("#80")).should(Condition.exist);
-
 
 
     }

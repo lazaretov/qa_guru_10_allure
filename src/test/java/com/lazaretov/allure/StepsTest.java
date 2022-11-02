@@ -20,15 +20,13 @@ public class StepsTest {
     public static final int ISSUE = 80;
 
     @BeforeAll
-    static void start(){
+    static void start() {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
-
 
     @Test
     @DisplayName("Поиск Issue по номеру")
     public void lambdaStepTest() {
-
 
         step("Открываем главную страницу", () -> {
             open("https://github.com/");
